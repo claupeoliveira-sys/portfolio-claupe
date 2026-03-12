@@ -1,4 +1,16 @@
-/* Reset Básico */
+/* Variáveis CSS */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --secondary-color: #6c757d; /* Cinza para detalhes */
+    --dark-color: #2c3e50; /* Azul escuro para texto principal/footer */
+    --light-bg: #f8f9fa; /* Fundo claro */
+    --white-color: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* Reset Básico e Fontes */
 * {
     margin: 0;
     padding: 0;
@@ -6,26 +18,63 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f7f6;
+    color: var(--dark-color);
+    background-color: var(--light-bg);
+    -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
-/* Header - Capa (Página Inicial) */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Hero Section (Capa) */
 .hero {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: #fff;
-    padding: 60px 0;
+    background: linear-gradient(135deg, #007bff 0%, #00b4d8 100%);
+    color: var(--white-color);
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 80px 0 60px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    transform: rotate(-30deg);
 }
 
 .hero .profile-pic {
@@ -33,52 +82,61 @@ body {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #fff;
-    margin-bottom: 20px;
+    border: 5px solid var(--white-color);
+    margin-bottom: 25px;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .hero h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
 }
 
 .hero .subtitle {
-    font-size: 1.4em;
-    margin-bottom: 20px;
+    font-size: 1.5em;
     font-weight: 300;
-}
-
-.hero .mission {
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
-    font-style: italic;
+    margin-bottom: 20px;
     opacity: 0.9;
 }
 
+.hero .mission {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-size: 1.15em;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
 .hero .contact-info a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.1em;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
+    display: inline-block;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 12px 25px;
+    border-radius: 30px;
+    margin: 0 10px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .hero .contact-info a:hover {
-    border-bottom: 2px solid #fff;
+    background-color: #e9ecef;
+    color: #0056b3;
+    transform: translateY(-3px);
 }
 
-/* Header para Páginas de Case */
+/* Cabeçalho das Páginas de Case */
 .case-header {
-    background-color: #2c3e50;
-    color: #fff;
+    background: var(--dark-color);
+    color: var(--white-color);
     padding: 20px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    flex-wrap: wrap;
 }
 
 .case-header .container {
@@ -86,7 +144,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px; /* Espaçamento entre os blocos */
+    gap: 20px;
 }
 
 .case-header .header-content {
@@ -100,13 +158,13 @@ body {
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #fff;
+    border: 2px solid var(--white-color);
 }
 
 .case-header h2 {
     font-size: 1.8em;
     margin: 0;
-    color: #fff;
+    color: var(--white-color);
 }
 
 .case-header .header-subtitle {
@@ -122,8 +180,8 @@ body {
 }
 
 .case-nav .nav-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
@@ -136,19 +194,18 @@ body {
     background-color: #0056b3;
 }
 
-
 /* Seções de Conteúdo */
 .section-content {
-    background-color: #fff;
+    background-color: var(--white-color);
     padding: 40px;
     margin: 30px 0;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px var(--shadow-light);
 }
 
-.section-content h1 { /* Para os títulos principais dos cases */
+.section-content h1 {
     font-size: 3em;
-    color: #007bff;
+    color: var(--primary-color);
     margin-bottom: 25px;
     text-align: center;
     position: relative;
@@ -156,7 +213,7 @@ body {
 
 .section-content h2 {
     font-size: 2.5em;
-    color: #007bff;
+    color: var(--primary-color);
     margin-bottom: 25px;
     text-align: center;
     position: relative;
@@ -167,7 +224,7 @@ body {
     content: '';
     width: 80px;
     height: 4px;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -177,23 +234,23 @@ body {
 
 .section-content h3 {
     font-size: 1.8em;
-    color: #2c3e50;
+    color: var(--dark-color);
     margin-top: 30px;
     margin-bottom: 15px;
-    border-left: 4px solid #007bff;
+    border-left: 4px solid var(--primary-color);
     padding-left: 15px;
 }
 
 .section-content h4 {
     font-size: 1.4em;
-    color: #007bff;
+    color: var(--primary-color);
     margin-top: 25px;
     margin-bottom: 10px;
 }
 
 .section-content h5 {
     font-size: 1.2em;
-    color: #2c3e50;
+    color: var(--dark-color);
     margin-top: 15px;
     margin-bottom: 8px;
 }
@@ -215,7 +272,7 @@ body {
     font-size: 1.05em;
 }
 
-/* Grid para "Sobre Mim" */
+/* Grid para "Sobre Mim" (Cards Refinados) */
 .about-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -224,40 +281,111 @@ body {
 }
 
 .about-item {
-    background-color: #f9f9f9;
-    padding: 25px;
-    border-radius: 6px;
-    border: 1px solid #eee;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03);
+    background-color: var(--white-color);
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+.about-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 123, 255, 0.05), rgba(0, 180, 216, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.about-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+    border-color: #c8d6ff;
+}
+
+.about-item:hover::before {
+    opacity: 1;
+}
+
+/* Card destaque (primeiro) */
+.about-item.about-highlight {
+    grid-column: span 2;
+    background: radial-gradient(circle at top left, #e8f1ff, #ffffff);
+    border: 1px solid #c5d8ff;
+}
+
+/* Título do card */
 .about-item h3 {
-    font-size: 1.5em;
-    color: #007bff;
+    font-size: 1.35em;
+    color: #1f2933;
     margin-top: 0;
-    margin-bottom: 15px;
-    border-left: none;
+    margin-bottom: 14px;
+    text-align: left;
+    position: relative;
+    padding-bottom: 8px;
+    border-left: none; /* Remove a borda azul padrão de h3 */
     padding-left: 0;
-    text-align: center;
 }
 
+.about-item h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary-color), #00b4d8);
+}
+
+/* Texto interno */
+.about-item p {
+    font-size: 0.98em;
+    color: #4b5563;
+    margin-bottom: 8px;
+}
+
+/* Listas “refinadas” */
 .about-item ul {
     list-style: none;
-    margin-left: 0;
+    margin: 10px 0 0 0;
+    padding: 0;
 }
 
 .about-item ul li {
-    margin-bottom: 5px;
-    padding-left: 20px;
+    margin-bottom: 8px;
+    padding-left: 22px;
     position: relative;
+    font-size: 0.96em;
+    color: #4b5563;
 }
 
+/* Bolinha normal azul */
 .about-item ul li::before {
     content: '•';
-    color: #007bff;
     position: absolute;
-    left: 0;
+    left: 4px;
+    top: 0;
+    color: var(--primary-color);
+    font-size: 1.1em;
 }
+
+/* Bullets com cheque verde para itens de impacto */
+.bullets-strong li::before {
+    content: '✓';
+    color: #16a34a;
+    font-size: 1em;
+    font-weight: 700;
+    left: 2px;
+}
+
 
 /* Grid de Cards para Cases na Home */
 .cases-grid {
@@ -268,9 +396,9 @@ body {
 }
 
 .case-card {
-    background-color: #fff;
+    background-color: var(--white-color);
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px var(--shadow-light);
     overflow: hidden;
     text-decoration: none;
     color: inherit;
@@ -281,14 +409,14 @@ body {
 
 .case-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
 .case-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .case-card .card-content {
@@ -300,12 +428,16 @@ body {
 
 .case-card h3 {
     font-size: 1.6em;
-    color: #007bff;
+    color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 10px;
     border-left: none;
     padding-left: 0;
     text-align: left;
+}
+
+.case-card h3::after { /* Remove o underline padrão de h3 */
+    content: none;
 }
 
 .case-card p {
@@ -317,10 +449,10 @@ body {
 
 .case-card .call-to-action {
     display: inline-block;
-    color: #007bff;
+    color: var(--primary-color);
     font-weight: bold;
     text-decoration: none;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 2px;
     transition: color 0.3s ease, border-bottom 0.3s ease;
 }
@@ -346,7 +478,7 @@ body {
     display: block;
     margin: 30px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px var(--shadow-light);
 }
 
 .case-section .case-image.small-image {
@@ -382,8 +514,8 @@ table th, table td {
 }
 
 table th {
-    background-color: #007bff;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     font-weight: bold;
 }
 
@@ -401,21 +533,21 @@ table tr:hover {
     border-radius: 12px;
     padding: 25px;
     margin: 20px 0;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px var(--shadow-light);
 }
 
 .approach-header {
     display: flex;
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    gap: 10px; /* Espaçamento entre os spans */
+    gap: 10px;
 }
 
 .tech-stack {
-    background: #007bff;
-    color: white;
+    background: var(--primary-color);
+    color: var(--white-color);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 0.9em;
@@ -424,7 +556,7 @@ table tr:hover {
 
 .use-case {
     background: #28a745;
-    color: white;
+    color: var(--white-color);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 0.9em;
@@ -439,7 +571,7 @@ table tr:hover {
 }
 
 .flow-steps .step {
-    background-color: #fff;
+    background-color: var(--white-color);
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
@@ -447,7 +579,7 @@ table tr:hover {
 }
 
 .flow-steps .step h5 {
-    color: #007bff;
+    color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -486,14 +618,14 @@ table tr:hover {
 
 .roadmap-arrow {
     font-size: 2em;
-    color: #007bff;
+    color: var(--primary-color);
     margin: 0 10px;
 }
 
 /* Lições Aprendidas */
 .lessons-learned {
     background-color: #f0f8ff;
-    border-left: 5px solid #007bff;
+    border-left: 5px solid var(--primary-color);
     padding: 20px;
     margin-top: 30px;
     border-radius: 8px;
@@ -591,8 +723,8 @@ table tr:hover {
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
-    color: #fff;
+    background-color: var(--dark-color);
+    color: var(--white-color);
     text-align: center;
     padding: 25px 0;
     margin-top: 40px;
@@ -637,6 +769,10 @@ footer {
 
     .about-grid, .cases-grid, .flow-steps, .comparison-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-item.about-highlight {
+        grid-column: span 1; /* em telas menores ele vira um card normal */
     }
 
     .roadmap {
