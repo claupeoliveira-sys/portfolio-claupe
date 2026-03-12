@@ -1,128 +1,177 @@
-/* Variáveis globais */
+/* Variáveis CSS para cores e sombras */
 :root {
-    --primary-color: #007bff;
-    --primary-light: #e6f2ff;
-    --dark-color: #2c3e50;
-    --text-color: #333333;
-    --bg-color: #f4f6f9;
+    --primary-color: #007bff; /* Azul principal */
+    --secondary-color: #6c757d; /* Cinza secundário */
+    --accent-green: #28a745; /* Verde para destaque */
+    --dark-color: #2c3e50; /* Azul escuro para footer/cabeçalho fixo */
     --white-color: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow-light: rgba(15, 23, 42, 0.08);
-    --shadow-medium: rgba(15, 23, 42, 0.16);
-    --accent-green: #16a34a;
-    --accent-purple: #7c3aed;
+    --light-gray: #f8f9fa;
+    --border-color: #e9ecef;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
 }
 
-/* Reset básico */
+/* Reset básico e fontes */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
+    color: #333;
+    background-color: var(--light-gray);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
 }
 
-/* Container padrão */
 .container {
-    width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 25px;
 }
 
-/* Cabeçalho principal (hero) */
+/* Estilos de links e botões */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Cabeçalho Hero (Página Inicial) */
 .hero {
-    background: radial-gradient(circle at top left, #1b3b5f, #0b1724);
-    color: var(--white-color);
+    background-color: var(--white-color);
+    padding: 60px 0;
     text-align: center;
-    padding: 60px 0 50px;
-    margin-bottom: 30px;
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    transition: all 0.4s ease-in-out; /* Transição para o cabeçalho fixo */
+    position: relative; /* Necessário para o z-index */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
 }
 
-.hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at bottom right, rgba(0, 123, 255, 0.2), transparent 60%);
-    opacity: 0.9;
-    pointer-events: none;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 1;
-}
-
-.profile-pic {
-    width: 140px;
-    height: 140px;
+.hero .profile-pic {
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.85);
+    border: 5px solid var(--primary-color);
     margin-bottom: 25px;
-    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    transition: all 0.4s ease-in-out;
 }
 
 .hero h1 {
     font-size: 3.2em;
+    color: var(--dark-color);
     margin-bottom: 10px;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    line-height: 1.2;
+    transition: all 0.4s ease-in-out;
 }
 
 .hero .subtitle {
     font-size: 1.4em;
-    font-weight: 300;
+    color: var(--secondary-color);
     margin-bottom: 20px;
-    opacity: 0.9;
+    font-weight: 400;
+    transition: all 0.4s ease-in-out;
 }
 
 .hero .mission {
-    max-width: 800px;
-    margin: 0 auto 30px;
     font-size: 1.1em;
-    line-height: 1.8;
-    opacity: 0.95;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-style: italic;
+    transition: all 0.4s ease-in-out;
 }
 
 .hero .contact-info a {
     display: inline-block;
-    background-color: var(--white-color);
-    color: var(--primary-color);
-    padding: 10px 22px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 12px 25px;
     border-radius: 30px;
-    margin: 0 8px;
+    margin: 0 10px;
     font-weight: 600;
-    font-size: 0.95em;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .hero .contact-info a:hover {
-    background-color: #e9ecef;
-    color: #0056b3;
-    transform: translateY(-2px);
+    background-color: #0056b3;
+    transform: translateY(-3px);
 }
 
-/* Cabeçalho das páginas de Case */
-.case-header {
-    background: var(--dark-color);
+/* Estilos para o cabeçalho fixo (sticky header) */
+body.header-scrolled .hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    background-color: var(--dark-color); /* Cor de fundo do cabeçalho fixo */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Para garantir que os itens se ajustem em telas menores */
+}
+
+body.header-scrolled .hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+body.header-scrolled .hero .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    margin-bottom: 0;
+    box-shadow: none;
+}
+
+body.header-scrolled .hero h1 {
+    font-size: 1.5em;
+    margin-bottom: 0;
     color: var(--white-color);
-    padding: 18px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.header-scrolled .hero .subtitle,
+body.header-scrolled .hero .mission,
+body.header-scrolled .hero .contact-info {
+    display: none; /* Esconde esses elementos no cabeçalho fixo */
+}
+
+/* Ajuste para o conteúdo não ficar escondido atrás do cabeçalho fixo */
+body.header-scrolled #content-wrapper {
+    padding-top: 80px; /* Altura aproximada do cabeçalho fixo */
+}
+
+
+/* Cabeçalho das Páginas de Cases (já compacto) */
+.case-header {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: sticky; /* Cabeçalho fixo nas páginas de case */
+    top: 0;
+    z-index: 999;
 }
 
 .case-header .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 15px;
 }
@@ -130,230 +179,166 @@ body {
 .case-header .header-content {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
-.profile-pic-small {
-    width: 56px;
-    height: 56px;
+.case-header .profile-pic-small {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--white-color);
+    border: 2px solid var(--primary-color);
 }
 
 .case-header h2 {
-    font-size: 1.6em;
+    font-size: 1.4em;
     margin: 0;
+    color: var(--white-color);
 }
 
-.header-subtitle {
+.case-header .header-subtitle {
     font-size: 0.9em;
-    opacity: 0.8;
+    color: #bbb;
+    margin: 0;
 }
 
 .case-nav {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
-.nav-button {
+.case-nav .nav-button {
     background-color: var(--primary-color);
     color: var(--white-color);
-    padding: 8px 14px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 20px;
     font-size: 0.9em;
+    font-weight: 500;
     transition: background-color 0.3s ease;
 }
 
-.nav-button:hover {
+.case-nav .nav-button:hover {
     background-color: #0056b3;
 }
 
-/* Seções de conteúdo (cards grandes brancos) */
+/* Seções de Conteúdo Geral */
 .section-content {
     background-color: var(--white-color);
-    padding: 35px;
-    margin: 25px 0;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px var(--shadow-light);
+    padding: 40px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+}
+
+.section-content h1,
+.section-content h2,
+.section-content h3 {
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    line-height: 1.3;
 }
 
 .section-content h1 {
-    font-size: 2.6em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
+    font-size: 2.8em;
     text-align: center;
-    position: relative;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .section-content h2 {
     font-size: 2.2em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
     text-align: center;
-    position: relative;
-}
-
-.section-content h1::after,
-.section-content h2::after {
-    content: '';
-    width: 70px;
-    height: 3px;
-    background-color: var(--primary-color);
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
+    margin-bottom: 30px;
+    color: var(--primary-color);
 }
 
 .section-content h3 {
-    font-size: 1.6em;
+    font-size: 1.8em;
     color: var(--dark-color);
-    margin-top: 25px;
-    margin-bottom: 12px;
+    margin-top: 30px;
+    margin-bottom: 15px;
     border-left: 4px solid var(--primary-color);
-    padding-left: 12px;
+    padding-left: 15px;
 }
 
 .section-content p {
-    margin-bottom: 12px;
-    font-size: 1.02em;
-    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1.05em;
+    color: #4b5563;
 }
 
-/* Grid "Sobre Mim" com cards + ícones */
+/* Grid de Cards "Sobre Mim" */
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
-    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 }
 
 .about-item {
     background-color: var(--white-color);
-    padding: 24px 22px 22px;
-    border-radius: 14px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-light);
     border: 1px solid var(--border-color);
-    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    overflow: hidden;
-}
-
-/* “Glow” leve no hover */
-.about-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top left, rgba(0, 123, 255, 0.07), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
 }
 
 .about-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.14);
-    border-color: #c8d6ff;
+    box-shadow: 0 8px 25px var(--shadow-medium);
 }
 
-.about-item:hover::before {
-    opacity: 1;
-}
-
-/* Card destaque (primeiro) */
-.about-highlight {
-    grid-column: span 2;
-    background: radial-gradient(circle at top left, #e8f1ff, #ffffff);
-    border: 1px solid #c5d8ff;
-}
-
-/* Área do ícone dentro do card */
-.card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: var(--primary-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4em;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    position: relative;
-    z-index: 1;
-}
-
-.card-icon-green {
-    background: #e9f9ef;
-    color: var(--accent-green);
-}
-
-/* Título do card */
 .about-item h3 {
-    font-size: 1.25em;
-    color: #1f2933;
+    font-size: 1.5em;
+    color: var(--primary-color);
     margin-top: 0;
-    margin-bottom: 10px;
-    position: relative;
-    padding-bottom: 6px;
+    margin-bottom: 15px;
     border-left: none;
     padding-left: 0;
-    z-index: 1;
+    text-align: center;
 }
 
-.about-item h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 34px;
-    height: 3px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--primary-color), #00b4d8);
+.about-item h3::after { /* Remove o underline padrão de h3 */
+    content: none;
 }
 
-/* Texto interno */
 .about-item p {
-    font-size: 0.97em;
+    font-size: 0.98em;
     color: #4b5563;
-    margin-bottom: 6px;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 10px;
 }
 
-/* Listas nos cards */
 .about-item ul {
     list-style: none;
-    margin: 8px 0 0 0;
+    margin-left: 0;
     padding: 0;
-    position: relative;
-    z-index: 1;
 }
 
-.about-item li {
-    margin-bottom: 6px;
+.about-item ul li {
+    margin-bottom: 8px;
     padding-left: 22px;
     position: relative;
-    font-size: 0.95em;
+    font-size: 0.96em;
     color: #4b5563;
 }
 
-/* Bolinha padrão azul */
-.about-item li::before {
+/* Bolinha normal azul */
+.about-item ul li::before {
     content: '•';
     position: absolute;
     left: 4px;
     top: 0;
     color: var(--primary-color);
-    font-size: 1.05em;
+    font-size: 1.1em;
 }
 
-/* Bullets de impacto (check verde) */
+/* Bullets com cheque verde para itens de impacto */
 .bullets-strong li::before {
     content: '✓';
     color: var(--accent-green);
@@ -362,24 +347,42 @@ body {
     left: 2px;
 }
 
-/* Grid de cards de cases na home */
-.cases-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 26px;
-    margin-top: 30px;
+/* Card de destaque "Quem eu sou" */
+.about-item.about-highlight {
+    grid-column: span 2; /* Ocupa duas colunas em telas maiores */
+    background-color: #e6f2ff; /* Fundo mais claro */
+    border-color: #a0cfff;
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.15);
 }
 
-.case-intro {
+.about-item.about-highlight h3 {
+    color: #0056b3;
+}
+
+/* Ícones nos cards "Sobre Mim" */
+.card-icon {
+    font-size: 2.5em;
     text-align: center;
-    font-size: 1.02em;
-    color: #555;
-    margin-top: 10px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.card-icon-green {
+    color: var(--accent-green);
+}
+
+
+/* Grid de Cards para Cases na Home */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .case-card {
     background-color: var(--white-color);
-    border-radius: 14px;
+    border-radius: 12px;
     box-shadow: 0 5px 20px var(--shadow-light);
     overflow: hidden;
     text-decoration: none;
@@ -387,64 +390,49 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 .case-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 28px var(--shadow-medium);
-}
-
-/* Badge com ícone e contexto do case */
-.case-card-badge {
-    position: absolute;
-    top: 10px;
-    left: 12px;
-    background: rgba(0, 123, 255, 0.95);
-    color: var(--white-color);
-    padding: 5px 10px;
-    border-radius: 999px;
-    font-size: 0.8em;
-    font-weight: 600;
-    z-index: 2;
-}
-
-.case-card-badge-purple {
-    background: rgba(124, 58, 237, 0.95);
-}
-
-.case-card-badge-green {
-    background: rgba(22, 163, 74, 0.95);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
 .case-card img {
     width: 100%;
-    height: 190px;
+    height: 200px;
     object-fit: cover;
     border-bottom: 1px solid var(--border-color);
 }
 
-.card-content {
-    padding: 20px 22px 18px;
+.case-card .card-content {
+    padding: 25px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
-.card-content h3 {
-    font-size: 1.4em;
+.case-card h3 {
+    font-size: 1.6em;
     color: var(--primary-color);
-    margin: 0 0 8px 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-left: none;
+    padding-left: 0;
+    text-align: left;
 }
 
-.card-content p {
-    font-size: 0.98em;
+.case-card h3::after { /* Remove o underline padrão de h3 */
+    content: none;
+}
+
+.case-card p {
+    font-size: 1em;
     color: #555;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     flex-grow: 1;
 }
 
-.call-to-action {
+.case-card .call-to-action {
     display: inline-block;
     color: var(--primary-color);
     font-weight: 600;
@@ -454,12 +442,32 @@ body {
     font-size: 0.94em;
 }
 
-.call-to-action:hover {
+.case-card .call-to-action:hover {
     color: #0056b3;
     border-bottom-color: #0056b3;
 }
 
-/* Seções de cases (páginas internas) */
+/* Badges nos cards de case */
+.card-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e0f7fa; /* Fundo claro para o badge */
+    color: #007bff; /* Cor do texto do badge */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border: 1px solid #b2ebf2;
+}
+
+.card-badge .badge-icon {
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+
+
+/* Seções de Cases (detalhe) */
 .case-section .case-intro {
     font-style: italic;
     color: #555;
@@ -597,8 +605,8 @@ footer {
 
 /* Responsividade */
 @media (max-width: 992px) {
-    .about-highlight {
-        grid-column: span 1;
+    .about-item.about-highlight {
+        grid-column: span 1; /* Em telas menores, o card de destaque ocupa 1 coluna */
     }
 
     .case-header .container {
@@ -612,6 +620,14 @@ footer {
 
     .case-nav {
         justify-content: center;
+    }
+
+    body.header-scrolled .hero .container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    body.header-scrolled .hero h1 {
+        font-size: 1.2em;
     }
 }
 
