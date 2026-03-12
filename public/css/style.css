@@ -19,7 +19,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header - Capa */
+/* Header - Capa (Página Inicial) */
 .hero {
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: #fff;
@@ -69,41 +69,73 @@ body {
     border-bottom: 2px solid #fff;
 }
 
-/* Navbar */
-.navbar {
+/* Header para Páginas de Case */
+.case-header {
     background-color: #2c3e50;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.navbar ul {
-    list-style: none;
-    text-align: center;
-}
-
-.navbar ul li {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-.navbar ul li a {
     color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+}
+
+.case-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaçamento entre os blocos */
+}
+
+.case-header .header-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.case-header .profile-pic-small {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.case-header h2 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #fff;
+}
+
+.case-header .header-subtitle {
+    font-size: 0.9em;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.case-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.case-nav .nav-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1em;
-    padding: 5px 0;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
 }
 
-.navbar ul li a:hover,
-.navbar ul li a.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+.case-nav .nav-button:hover {
+    background-color: #0056b3;
 }
+
 
 /* Seções de Conteúdo */
 .section-content {
@@ -114,6 +146,14 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+.section-content h1 { /* Para os títulos principais dos cases */
+    font-size: 3em;
+    color: #007bff;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+}
+
 .section-content h2 {
     font-size: 2.5em;
     color: #007bff;
@@ -122,6 +162,7 @@ body {
     position: relative;
 }
 
+.section-content h1::after,
 .section-content h2::after {
     content: '';
     width: 80px;
@@ -218,7 +259,79 @@ body {
     left: 0;
 }
 
-/* Seções de Cases */
+/* Grid de Cards para Cases na Home */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.case-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.case-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.case-card .card-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-card h3 {
+    font-size: 1.6em;
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-left: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.case-card p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.case-card .call-to-action {
+    display: inline-block;
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.case-card .call-to-action:hover {
+    color: #0056b3;
+    border-bottom-color: #0056b3;
+}
+
+
+/* Seções de Cases (detalhe) */
 .case-section .case-intro {
     font-style: italic;
     color: #555;
@@ -412,6 +525,69 @@ table tr:hover {
     left: 0;
 }
 
+/* Comparativo Antes e Depois */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.comparison-grid .before,
+.comparison-grid .after {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.comparison-grid .before h4 {
+    color: #dc3545; /* Vermelho para "Antes" */
+    text-align: center;
+    margin-top: 0;
+}
+
+.comparison-grid .after h4 {
+    color: #28a745; /* Verde para "Depois" */
+    text-align: center;
+    margin-top: 0;
+}
+
+.comparison-grid ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+.comparison-grid ul li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.comparison-grid .before ul li::before {
+    content: '✗';
+    color: #dc3545;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.comparison-grid .after ul li::before {
+    content: '✓';
+    color: #28a745;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.author-signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 30px;
+    font-size: 1.1em;
+    color: #555;
+}
 
 /* Footer */
 footer {
@@ -424,6 +600,20 @@ footer {
 }
 
 /* Responsividade */
+@media (max-width: 992px) {
+    .case-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .case-header .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .case-nav {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5em;
@@ -433,8 +623,8 @@ footer {
         font-size: 1.2em;
     }
 
-    .navbar ul li {
-        margin: 0 10px;
+    .section-content h1 {
+        font-size: 2.5em;
     }
 
     .section-content h2 {
@@ -445,7 +635,7 @@ footer {
         font-size: 1.5em;
     }
 
-    .about-grid {
+    .about-grid, .cases-grid, .flow-steps, .comparison-grid {
         grid-template-columns: 1fr;
     }
 
@@ -478,16 +668,18 @@ footer {
         margin: 10px auto;
     }
 
-    .navbar ul li {
-        display: block;
-        margin: 10px 0;
-    }
-
     .section-content {
         padding: 20px;
     }
 
-    .flow-steps {
-        grid-template-columns: 1fr;
+    .case-header h2 {
+        font-size: 1.5em;
+    }
+    .case-header .header-subtitle {
+        font-size: 0.8em;
+    }
+    .case-nav .nav-button {
+        font-size: 0.8em;
+        padding: 8px 12px;
     }
 }
