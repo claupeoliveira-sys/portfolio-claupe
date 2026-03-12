@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case 1: Otimização de Processos com IA Generativa - Claupe Oliveira</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="case-header">
+        <div class="container">
+            <div class="header-content">
+                <img src="assets/profile-picture.jpg" alt="Claupe Oliveira" class="profile-pic-small">
+                <div>
+                    <h2>Claupe Oliveira</h2>
+                    <p class="header-subtitle">Gerente de Operações e Delivery de TI | IA aplicada à Gestão e Operações</p>
+                </div>
+            </div>
+            <nav class="case-nav">
+                <a href="index.html" class="nav-button">← Voltar para Home</a>
+                <a href="case2.html" class="nav-button">Próximo Case →</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="case1-detail" class="section-content case-section">
+            <h1>Case 1: Otimização de Processos e Liderança com IA Generativa</h1>
+            <p class="case-intro">Este case demonstra a aplicação prática de IA Generativa para otimizar processos de gestão, focando na eficiência operacional e governança de dados, especialmente na elaboração de feedbacks individualizados.</p>
+
+            <h3>1. Visão Macro da Arquitetura</h3>
+            <p>A arquitetura foi concebida em cinco camadas funcionais independentes, permitindo substituição de componentes sem impacto no fluxo principal. O motor LLM escolhido foi a API Mistral, com prompts estruturados no padrão system + user para garantir consistência e rastreabilidade de respostas.</p>
+            <img src="assets/cases/case1-image.jpg" alt="Arquitetura Conceitual em Camadas do Case 1" class="case-image">
+            <p class="image-caption">Diagrama: Arquitetura Conceitual em Camadas (Input, Orquestração, Inteligência LLM, Output, Evolução)</p>
+
+            <h3>2. Contexto de Uso: Quando usar cada abordagem?</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fator</th>
+                            <th>Abordagem 1 (Low-Code)</th>
+                            <th>Abordagem 2 (Serverless)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Complexidade</td>
+                            <td>Projetos rápidos/POCs</td>
+                            <td>Sistemas em produção</td>
+                        </tr>
+                        <tr>
+                            <td>Equipe</td>
+                            <td>Times de negócio</td>
+                            <td>Squads técnicas</td>
+                        </tr>
+                        <tr>
+                            <td>Escala</td>
+                            <td>Até 50 reqs/mês</td>
+                            <td>+1k reqs/mês</td>
+                        </tr>
+                        <tr>
+                            <td>Customização</td>
+                            <td>Limitada</td>
+                            <td>Ilimitada (código aberto)</td>
+                        </tr>
+                        <tr>
+                            <td>Custos</td>
+                            <td>US$ 0-50/mês</td>
+                            <td>US$ 15-200/mês</td>
+                        </tr>
+                        <tr>
+                            <td>Manutenção</td>
+                            <td>Gerenciada pelo provedor</td>
+                            <td>Ownership total</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>3. Detalhamento por Abordagem</h3>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 1: Low-Code Corporativo</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Google Sheets → Make → Mistral</span>
+                    <span class="use-case">Ideal para: Squads ágeis sem perfil técnico</span>
+                </div>
+                <p>Esta abordagem foca na implementação rápida e na adoção por equipes sem perfil técnico, utilizando ferramentas low-code para orquestração e o Google Sheets como interface de entrada e saída.</p>
+                <img src="assets/cases/case1-flow1.svg" alt="Fluxo Low-Code do Case 1" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>Input Estruturado</h5>
+                        <p>Dados estruturados por colaborador preenchidos diretamente na planilha Google corporativa, com template validado via Apps Script.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Orquestração (Make)</h5>
+                        <p>Plataforma low-code que valida campos obrigatórios, monta o prompt padronizado e gerencia o fluxo de dados.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Inteligência LLM (API Mistral)</h5>
+                        <p>Chamada HTTP para a API Mistral, que gera a resposta e a grava de volta na planilha original.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Diferenciais</h5>
+                        <ul>
+                            <li>Solução 100% low-code, sem infraestrutura dedicada.</li>
+                            <li>Escalável no ecossistema Google Workspace.</li>
+                            <li>Redução estimada de ~70% do tempo operacional.</li>
+                            <li>Base para análise longitudinal de performance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 2: Arquitetura Serverless Moderna</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">GitHub → Vercel → Node.js Serverless → Mistral</span>
+                    <span class="use-case">Ideal para: Sistemas em produção com alta escalabilidade e governança</span>
+                </div>
+                <p>Esta abordagem oferece uma solução mais robusta e escalável, utilizando uma arquitetura serverless para o backend e deploy contínuo via GitHub e Vercel.</p>
+                <img src="assets/cases/case1-flow2.svg" alt="Fluxo Serverless do Case 1" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>Frontend (HTML/CSS na Vercel)</h5>
+                        <p>Interface leve e responsiva hospedada com deploy contínuo via GitHub Actions.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Backend (Function Node.js Serverless)</h5>
+                        <p>Função serverless que converte o formulário em prompt, chama a API Mistral, retorna JSON e renderiza a UI.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Monitoramento</h5>
+                        <p>OpenTelemetry integrado para rastreabilidade de latência e erros em produção.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Diferenciais</h5>
+                        <ul>
+                            <li>Arquitetura moderna serverless, zero-maintenance.</li>
+                            <li>Custo operacional menor que US$ 15/mês.</li>
+                            <li>Redução estimada de ~85% no tempo de geração.</li>
+                            <li>Cold-start configurado abaixo de 1,2 segundos.</li>
+                            <li>Deploy contínuo com rollback automático via Git.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Comparativo Técnico e Trade-offs</h3>
+            <p>Ambas as abordagens oferecem benefícios distintos, e a escolha depende do contexto do projeto e dos recursos disponíveis.</p>
+            <ul>
+                <li><strong>Flexibilidade vs. Velocidade de Implementação:</strong> A abordagem low-code é mais rápida para POCs, enquanto a serverless oferece maior flexibilidade para customização e integração complexa.</li>
+                <li><strong>Custo Inicial vs. Custo Recorrente:</strong> Low-code pode ter um custo inicial menor, mas a serverless pode ser mais eficiente em escala, com custos previsíveis e otimizados.</li>
+                <li><strong>Governança e Compliance:</strong> A abordagem serverless permite um controle mais granular sobre segurança e privacidade (LGPD++), enquanto a low-code depende mais das políticas do provedor.</li>
+            </ul>
+
+            <h3>5. Roadmap de Evolução</h3>
+            <p>A progressão natural entre as abordagens pode ser visualizada como um roadmap:</p>
+            <div class="roadmap">
+                <div class="roadmap-step">
+                    <h4>Low-Code Proof</h4>
+                    <p>(1-4 semanas)</p>
+                    <p>Validação rápida do conceito, com foco em funcionalidade básica e feedback inicial.</p>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-step">
+                    <h4>Serverless MVP</h4>
+                    <p>(2-8 semanas)</p>
+                    <p>Implementação de uma versão mínima viável com arquitetura serverless, escalabilidade e governança aprimoradas.</p>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-step">
+                    <h4>Pipeline Empresarial</h4>
+                    <p>(3-6 meses)</p>
+                    <p>Expansão para outros processos corporativos, integração com sistemas legados e analytics longitudinal de performance.</p>
+                </div>
+            </div>
+
+            <h3>6. Lições Aprendidas e Resultados</h3>
+            <div class="lessons-learned">
+                <h4>Padrões Comprovados</h4>
+                <ul>
+                    <li>**Governança > Velocidade nas fases iniciais:** A gestão de riscos (segurança, privacidade, viés algorítmico) foi tratada como requisito de arquitetura desde a concepção.</li>
+                    <li>**Cold-start de 1.2s é crítico para adoção:** Otimização do tempo de resposta inicial da função serverless para garantir uma boa experiência do usuário.</li>
+                    <li>**Human-in-the-Loop:** A revisão humana obrigatória antes da entrega de feedbacks é essencial para garantir qualidade e mitigar vieses.</li>
+                </ul>
+                <h4>Resultados Obtidos</h4>
+                <ul>
+                    <li>**Eficiência com ROI Mensurável:** Redução de 70% a 85% no tempo de geração de feedbacks, com custo operacional inferior a US$ 15/mês na arquitetura serverless.</li>
+                    <li>**Arquitetura Reutilizável:** Solução adaptável para pré-venda, triagem de incidentes e suporte interno.</li>
+                    <li>**Maturidade Técnica e Estratégica:** Visão de produto, governança robusta e capacidade de entregar abordagens complementares (low-code e serverless) com foco em valor real.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Claupe Oliveira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
