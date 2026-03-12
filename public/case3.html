@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case 3: Eficiência no Refinamento de Requisitos de Delivery com IA - Claupe Oliveira</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="case-header">
+        <div class="container">
+            <div class="header-content">
+                <img src="assets/profile-picture.jpg" alt="Claupe Oliveira" class="profile-pic-small">
+                <div>
+                    <h2>Claupe Oliveira</h2>
+                    <p class="header-subtitle">Gerente de Operações e Delivery de TI | IA aplicada à Gestão e Operações</p>
+                </div>
+            </div>
+            <nav class="case-nav">
+                <a href="index.html" class="nav-button">← Voltar para Home</a>
+                <a href="case2.html" class="nav-button">Case Anterior</a>
+                <!-- Não há próximo case, então este botão pode ser removido ou desabilitado se for o último -->
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="case3-detail" class="section-content case-section">
+            <h1>Case 3: Eficiência no Refinamento de Requisitos de Delivery com IA</h1>
+            <p class="case-intro">Projetei esta solução para elevar a maturidade técnica e a fluidez das squads. Ao orquestrar um 'time digital' de agentes (PO, QA e Sizing), eu padronizo a qualidade das entregas e removo o viés humano das estimativas. É a aplicação prática de IA Assistiva para garantir que a engenharia receba sempre insumos prontos para o desenvolvimento, com foco total em ROI e eficiência operacional.</p>
+
+            <h3>1. O Desafio: Gargalos no Refinamento Manual de Requisitos</h3>
+            <p>O refinamento manual de requisitos consome tempo excessivo, gera inconsistências e eleva os custos. Equipes passam dias revisando documentos, corrigindo erros e reescrevendo histórias — antes mesmo de uma linha de código ser escrita.</p>
+            <ul>
+                <li>**72% Tempo Perdido:** do ciclo de entrega gasto apenas em refinamento manual de requisitos.</li>
+                <li>**40% Erros nos Requisitos:** das histórias apresentam ambiguidades ou informações incompletas.</li>
+                <li>**10× Custo dos Erros:** mais caro corrigir um erro de requisito na produção do que no início.</li>
+            </ul>
+
+            <h3>2. Visão Geral da Solução: Aceleração da Esteira de Requisitos com Agentes Inteligentes</h3>
+            <p>A solução utiliza Agentes de IA para transformar automaticamente um requisito bruto em histórias de usuário estruturadas, cenários de teste e estimativas de esforço — reduzindo dias de trabalho a minutos.</p>
+            <img src="assets/cases/case3-image.jpg" alt="Visão Geral da Solução do Case 3" class="case-image">
+            <p class="image-caption">Diagrama: Fluxo do Requisito Bruto ao Entregável Refinado (Requisito Bruto → Processamento IA → Saída Refinada → Revisão War Room)</p>
+            <ul>
+                <li>**Velocidade:** De dias para minutos no processo de refinamento.</li>
+                <li>**Consistência:** Padrão único aplicado a todos os requisitos.</li>
+                <li>**Economia:** Redução drástica de retrabalho e erros tardios.</li>
+            </ul>
+
+            <h3>3. Detalhamento por Abordagem</h3>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 1: Automação Low-Code com Make + Google Sheets</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Google Sheets → Make → Gemini</span>
+                    <span class="use-case">Ideal para: Implementação rápida e validação de conceito</span>
+                </div>
+                <p>Implementação rápida, sem infraestrutura própria. Três agentes especializados operam dentro do Make (plataforma de automação visual), lendo requisitos diretamente do Google Sheets e devolvendo os resultados refinados na mesma planilha.</p>
+                <img src="assets/cases/case3-flow1.svg" alt="Fluxo Low-Code do Case 3" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>1. Agente Product Owner</h5>
+                        <p>Lê o requisito bruto e gera histórias de usuário no formato padrão.</p>
+                    </div>
+                    <div class="step">
+                        <h5>2. Agente QA</h5>
+                        <p>Gera automaticamente cenários de teste.</p>
+                    </div>
+                    <div class="step">
+                        <h5>3. Agente Sizing</h5>
+                        <p>Estima o esforço de desenvolvimento em pontos de história.</p>
+                    </div>
+                </div>
+                <p><strong>Destaques:</strong> Implementação em horas, custo zero de infraestrutura, integração nativa com Google Workspace.</p>
+            </div>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 2: Plataforma Colaborativa Serverless (War-Room)</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">GitHub → Vercel → Node.js Serverless → Gemini</span>
+                    <span class="use-case">Ideal para: Sistemas em produção com alta governança e colaboração</span>
+                </div>
+                <p>Uma aplicação web construída em Node.js e hospedada no Vercel, reunindo cinco agentes especializados em uma interface colaborativa única — o "War-Room".</p>
+                <img src="assets/cases/case3-flow2.svg" alt="Fluxo Serverless do Case 3" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>1. Product Owner</h5>
+                        <p>Refina e estrutura histórias de usuário com critérios de aceite claros.</p>
+                    </div>
+                    <div class="step">
+                        <h5>2. QA Agent</h5>
+                        <p>Gera cenários de teste automatizados e casos de borda.</p>
+                    </div>
+                    <div class="step">
+                        <h5>3. Sizing Agent</h5>
+                        <p>Calcula estimativas de esforço e complexidade para cada história.</p>
+                    </div>
+                    <div class="step">
+                        <h5>4. Release Manager</h5>
+                        <p>Produz notas de release e plano de deploy.</p>
+                    </div>
+                    <div class="step">
+                        <h5>5. Reviewer</h5>
+                        <p>Consolida e revisa todas as saídas para consistência e qualidade.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Tecnologias Utilizadas</h3>
+            <p>Todas as tecnologias utilizadas são modernas, amplamente adotadas no mercado e de baixo custo operacional. A combinação garante escalabilidade, rapidez de implementação e facilidade de manutenção.</p>
+            <div class="tech-stack-list">
+                <ul>
+                    <li><strong>Google Sheets:</strong> Planilha online usada como interface de entrada de requisitos.</li>
+                    <li><strong>Make:</strong> Plataforma de automação visual (conecta sistemas sem necessidade de programação avançada).</li>
+                    <li><strong>Gemini (Google AI):</strong> Modelo de inteligência artificial generativa que interpreta e gera texto com qualidade profissional.</li>
+                    <li><strong>Node.js:</strong> Ambiente de execução JavaScript no servidor (motor que processa as requisições da aplicação web).</li>
+                    <li><strong>Vercel:</strong> Plataforma serverless (sem servidor dedicado) para hospedagem e deploy automático da aplicação.</li>
+                    <li><strong>GitHub:</strong> Repositório de código-fonte (onde o código é armazenado, versionado e compartilhado com o time).</li>
+                </ul>
+            </div>
+
+            <h3>5. Inovação: O Time Digital de Especialistas</h3>
+            <p>Os agentes não operam de forma isolada. Eles formam um ecossistema colaborativo onde a saída de um agente serve como entrada para o próximo — garantindo consistência e qualidade em cada etapa do processo.</p>
+            <div class="flow-steps">
+                <div class="step">
+                    <h5>Requisito Bruto</h5>
+                    <p>Time de negócio descreve a necessidade.</p>
+                </div>
+                <div class="step">
+                    <h5>PO Agent</h5>
+                    <p>Estrutura histórias e critérios de aceite.</p>
+                </div>
+                <div class="step">
+                    <h5>QA + Sizing</h5>
+                    <p>Adiciona testes e estimativas de esforço.</p>
+                </div>
+                <div class="step">
+                    <h5>Reviewer</h5>
+                    <p>Consolida e valida consistência final.</p>
+                </div>
+            </div>
+            <p><strong>Diferencial:</strong> A colaboração entre agentes elimina retrabalho e garante que todos os artefatos (histórias, testes, estimativas) estejam sempre alinhados entre si.</p>
+
+            <h3>6. Governança: War-Room, Controle Humano e FinOps</h3>
+            <p>Depois de toda a geração do material pelos agentes, os agentes em conjunto conversam e justificam suas decisões em uma área de War-Room, em formato de reunião. O War-Room é a interface central onde gestores visualizam, revisam e aprovam as saídas dos agentes antes de qualquer publicação no backlog.</p>
+            <ul>
+                <li>**Revisão Humana (Human-in-the-Loop):** Nenhuma história vai ao backlog sem aprovação explícita do responsável.</li>
+                <li>**Decisão GO / NO-GO:** Interface clara com botões de aprovação ou rejeição por item gerado.</li>
+                <li>**FinOps de Tokens:** Controle granular do consumo de tokens (unidade de custo da IA) por requisito processado.</li>
+            </ul>
+            <h4>Princípios de Governança:</h4>
+            <ul>
+                <li>Rastreabilidade total de cada decisão.</li>
+                <li>Auditoria de outputs por agente.</li>
+                <li>Controle de custos em tempo real.</li>
+                <li>Aprovação obrigatória antes do commit.</li>
+                <li>Logs de uso para compliance.</li>
+            </ul>
+
+            <h3>7. Benefícios de Negócio: Retorno sobre o Investimento (ROI)</h3>
+            <p>A adoção do modelo de operação com agentes de IA entrega resultados mensuráveis e consistentes. Os ganhos impactam diretamente a velocidade de entrega, a qualidade dos artefatos e o custo operacional do time de produto.</p>
+            <div class="lessons-learned">
+                <h4>Resultados Obtidos</h4>
+                <ul>
+                    <li>**85% Redução no Tempo de Refinamento:** De dias para minutos por requisito processado.</li>
+                    <li>**70% Menos Erros de Requisito:** Histórias mais claras reduzem ambiguidades no desenvolvimento.</li>
+                    <li>**60% Redução de Retrabalho:** Menos ciclos de revisão e correção nas sprints (ciclos de trabalho).</li>
+                </ul>
+                <h4>Impacto no Negócio</h4>
+                <ul>
+                    <li>**Velocidade:** Decisões mais rápidas, sprints mais previsíveis.</li>
+                    <li>**Consistência:** Padrão uniforme em todos os artefatos gerados.</li>
+                    <li>**Eficiência de Custo:** 3× ROI estimado nos primeiros 6 meses.</li>
+                    <li>**Escalabilidade:** Modelo replicável para outros times e projetos.</li>
+                </ul>
+            </div>
+
+            <h3>8. Conclusão e Impacto</h3>
+            <div class="lessons-learned">
+                <h4>Resultados Finais</h4>
+                <ul>
+                    <li>**85% Eficiência:** Ganho de eficiência no processo de refinamento de requisitos.</li>
+                    <li>**100% Compliance:** Rastreabilidade e conformidade em todos os artefatos gerados.</li>
+                    <li>**3× ROI:** Retorno sobre investimento estimado nos primeiros 6 meses de operação.</li>
+                </ul>
+                <p>A verdadeira inovação não está na tecnologia isolada, mas em como ela resolve gargalos invisíveis. Este modelo remove o 'telefone sem fio' do delivery ao colocar agentes especializados para colaborar entre si. O resultado final não é apenas um documento pronto; é a previsibilidade financeira e técnica que permite ao negócio tomar decisões seguras, em uma velocidade antes impossível.</p>
+                <p class="author-signature">Orquestrador, Executor e Idealizador: Claupe Oliveira</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Claupe Oliveira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
