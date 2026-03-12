@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case 2: Geração de Histórias de Usuário com RAG e IA Generativa - Claupe Oliveira</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="case-header">
+        <div class="container">
+            <div class="header-content">
+                <img src="assets/profile-picture.jpg" alt="Claupe Oliveira" class="profile-pic-small">
+                <div>
+                    <h2>Claupe Oliveira</h2>
+                    <p class="header-subtitle">Gerente de Operações e Delivery de TI | IA aplicada à Gestão e Operações</p>
+                </div>
+            </div>
+            <nav class="case-nav">
+                <a href="index.html" class="nav-button">← Voltar para Home</a>
+                <a href="case1.html" class="nav-button">Case Anterior</a>
+                <a href="case3.html" class="nav-button">Próximo Case →</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="case2-detail" class="section-content case-section">
+            <h1>Case 2: Geração de Histórias de Usuário com RAG e IA Generativa</h1>
+            <p class="case-intro">Este case aborda a utilização de RAG (Retrieval Augmented Generation) para gerar histórias de usuário de forma inteligente, aproveitando o conhecimento de projetos e documentações anteriores, através de fluxos automatizados (n8n).</p>
+
+            <h3>1. Visão Macro da Arquitetura</h3>
+            <p>A solução utiliza a arquitetura Retrieval Augmented Generation (RAG) para transformar documentos técnicos em histórias de usuário estruturadas, garantindo contexto e precisão em cada etapa do processo. A arquitetura é modular e flexível, permitindo a substituição de componentes sem impacto no fluxo principal.</p>
+            <img src="assets/cases/case2-image.jpg" alt="Arquitetura em Camadas do Case 2" class="case-image">
+            <p class="image-caption">Diagrama: Arquitetura em Camadas (Interface, Orquestração, Embeddings, Base de Conhecimento, LLM)</p>
+
+            <h3>2. Contexto de Uso: Otimização do Refinamento de Requisitos</h3>
+            <p>O desafio central era a criação manual de histórias de usuário, um processo lento, repetitivo e propenso a inconsistências. A solução RAG visa automatizar, padronizar e acelerar este processo, reduzindo erros e liberando a equipe para tarefas de maior valor estratégico.</p>
+            <ul>
+                <li><strong>Criação Manual:</strong> Processo lento e repetitivo que consome recursos valiosos da equipe.</li>
+                <li><strong>Inconsistências:</strong> Ambiguidades e variações na qualidade dificultam o alinhamento.</li>
+                <li><strong>Alto Consumo:</strong> Tempo desperdiçado em tarefas de baixo valor estratégico.</li>
+            </ul>
+            <p><strong>Objetivos da Solução:</strong> Automatizar a geração a partir de documentos técnicos, melhorar a clareza e o padrão dos requisitos, acelerar os ciclos de delivery e reduzir retrabalho.</p>
+
+            <h3>3. Detalhamento da Abordagem: Fluxo de Dados RAG</h3>
+
+            <div class="architecture-approach">
+                <h4>Caminho de Ingestão de Documentos</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Interface Web → n8n → Cohere Embeddings → Supabase</span>
+                    <span class="use-case">Objetivo: Construir uma base de conhecimento contextualizada</span>
+                </div>
+                <p>Este fluxo descreve como os documentos brutos são processados e armazenados para serem utilizados na geração de histórias de usuário.</p>
+                <img src="assets/cases/case2-flow-ingestion.svg" alt="Fluxo de Ingestão do Case 2" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>1. Upload de PDF</h5>
+                        <p>Usuário envia arquivos PDF através da interface web.</p>
+                    </div>
+                    <div class="step">
+                        <h5>2. Webhook n8n</h5>
+                        <p>O n8n recebe o PDF, extrai o texto e realiza o "chunking" (divisão em pedaços menores).</p>
+                    </div>
+                    <div class="step">
+                        <h5>3. Cohere Embeddings</h5>
+                        <p>Cada "chunk" é transformado em um vetor numérico (embedding) que representa seu significado semântico.</p>
+                    </div>
+                    <div class="step">
+                        <h5>4. Supabase (pgvector)</h5>
+                        <p>Vetores, chunks e metadados são armazenados no Supabase, utilizando a extensão pgvector para busca semântica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="architecture-approach">
+                <h4>Caminho de Geração de Histórias</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Interface Web → n8n → Cohere Embeddings → Supabase (Busca) → Google Gemini</span>
+                    <span class="use-case">Objetivo: Gerar histórias de usuário contextualizadas e precisas</span>
+                </div>
+                <p>Este fluxo detalha como uma query do usuário é utilizada para recuperar informações relevantes e gerar histórias de usuário com IA.</p>
+                <img src="assets/cases/case2-flow-generation.svg" alt="Fluxo de Geração do Case 2" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>1. Query do Usuário</h5>
+                        <p>Usuário digita a necessidade na interface web.</p>
+                    </div>
+                    <div class="step">
+                        <h5>2. Webhook n8n</h5>
+                        <p>O n8n recebe a query e a vetoriza usando Cohere Embeddings.</p>
+                    </div>
+                    <div class="step">
+                        <h5>3. Busca Semântica</h5>
+                        <p>O vetor da query é comparado com os vetores no Supabase para encontrar os chunks mais relevantes.</p>
+                    </div>
+                    <div class="step">
+                        <h5>4. Montagem do Contexto</h5>
+                        <p>Os chunks recuperados são combinados com a query original para formar um prompt rico em contexto.</p>
+                    </div>
+                    <div class="step">
+                        <h5>5. Google Gemini LLM</h5>
+                        <p>O Gemini gera as histórias de usuário estruturadas com base no prompt contextualizado.</p>
+                    </div>
+                    <div class="step">
+                        <h5>6. Retorno à Interface</h5>
+                        <p>As histórias geradas são exibidas na tela, com opção de download.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Stack Tecnológico e Funcionalidades</h3>
+            <p>As tecnologias escolhidas garantem uma solução robusta, escalável e eficiente:</p>
+            <div class="tech-stack-list">
+                <ul>
+                    <li><strong>Google Gemini (LLM):</strong> Modelo de linguagem grande para geração de texto natural e contextualizado.</li>
+                    <li><strong>Cohere (Embeddings):</strong> Serviço para transformar texto em vetores semânticos, crucial para a busca RAG.</li>
+                    <li><strong>Supabase (PostgreSQL + pgvector + Storage):</strong> Banco de dados para armazenamento eficiente de vetores, chunks e PDFs originais.</li>
+                    <li><strong>n8n (Automação & Orquestração):</strong> Plataforma low-code que orquestra os fluxos de ingestão e geração.</li>
+                    <li><strong>Vercel (Deploy & Hosting):</strong> Plataforma para deploy contínuo e hospedagem da interface web.</li>
+                    <li><strong>GitHub (Versionamento):</strong> Controle de versão, CI/CD e colaboração entre equipes.</li>
+                    <li><strong>HTML/CSS/JavaScript:</strong> Tecnologias fundamentais para a construção da interface de usuário interativa e responsiva.</li>
+                </ul>
+            </div>
+            <h4>Funcionalidades Chave:</h4>
+            <ul>
+                <li>Upload de Documentos PDF para base de conhecimento.</li>
+                <li>Extração e Chunking de Texto automático.</li>
+                <li>Busca Semântica (RAG) para contextualização.</li>
+                <li>Geração de Histórias de Usuário no formato ágil.</li>
+                <li>Download de Resultados em .txt e .pdf.</li>
+                <li>Visualização de Documentos Indexados.</li>
+            </ul>
+
+            <h3>5. Antes e Depois: Transformando o Refinamento de Requisitos</h3>
+            <div class="comparison-grid">
+                <div class="before">
+                    <h4>Antes: Processo Manual</h4>
+                    <ul>
+                        <li>Lento, repetitivo e propenso a erros.</li>
+                        <li>Dias para refinar requisitos.</li>
+                        <li>Inconsistências e ambiguidades.</li>
+                        <li>Alto custo operacional.</li>
+                        <li>Frustração da equipe.</li>
+                        <li>Gargalos no delivery.</li>
+                    </ul>
+                </div>
+                <div class="after">
+                    <h4>Depois: IA Generativa</h4>
+                    <ul>
+                        <li>Automatizado, contextualizado e preciso.</li>
+                        <li>Minutos para gerar histórias.</li>
+                        <li>Consistência e clareza.</li>
+                        <li>Redução de retrabalho.</li>
+                        <li>Equipe focada em valor estratégico.</li>
+                        <li>Delivery acelerado.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>6. Resultados e ROI: Valor Mensurável</h3>
+            <div class="lessons-learned">
+                <h4>Resultados Obtidos</h4>
+                <ul>
+                    <li>**80% Redução no Tempo:** De dias para minutos na criação de histórias de usuário.</li>
+                    <li>**30% Aumento na Consistência:** Histórias mais claras, padronizadas e alinhadas.</li>
+                </ul>
+                <h4>Impacto no Negócio</h4>
+                <ul>
+                    <li>**Ciclos de Delivery Mais Rápidos:** Aceleração significativa do tempo de lançamento de produtos e features.</li>
+                    <li>**Melhor Alinhamento:** Histórias baseadas em documentos reais, reduzindo desvios e retrabalho.</li>
+                    <li>**Experiência Otimizada:** Interface responsiva e rápida que funciona perfeitamente em dispositivos mobile.</li>
+                </ul>
+            </div>
+
+            <h3>7. Lições Aprendidas e Evolução Contínua</h3>
+            <div class="lessons-learned">
+                <h4>Lições Aprendidas</h4>
+                <ul>
+                    <li>A qualidade dos documentos de entrada impacta diretamente a precisão das histórias geradas.</li>
+                    <li>A plataforma n8n agilizou o desenvolvimento e facilitou ajustes no fluxo.</li>
+                    <li>A validação humana final é essencial para garantir qualidade e contexto.</li>
+                    <li>A escolha do modelo de embedding afeta significativamente a relevância da busca semântica.</li>
+                </ul>
+                <h4>Próximos Passos</h4>
+                <ul>
+                    <li>**Múltiplos Idiomas:** Suporte a documentos e geração em diversos idiomas para equipes globais.</li>
+                    <li>**Fine-Tuning:** Ajuste do LLM para domínios específicos da empresa.</li>
+                    <li>**Integração com Jira:** Conexão direta com ferramentas de gestão de projetos como Jira e Azure DevOps.</li>
+                    <li>**Dashboards de Analytics:** Monitoramento de performance e métricas de uso para otimização contínua.</li>
+                    <li>**Expansão de Documentos:** Suporte a outros tipos de artefatos como planos de teste e especificações técnicas.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Claupe Oliveira. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
