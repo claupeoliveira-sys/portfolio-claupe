@@ -41,9 +41,9 @@
                     <p>Profissional com mais de 20 anos liderando times de alta performance em delivery de serviços, sustentação, desenvolvimento e operações de TI, atendendo clientes nacionais e internacionais de varejo, energia, manufatura, banking, fintech e RH. Experiência na gestão de grandes contas, operações 24x7 e portfólios complexos de projetos digitais, com times remotos e híbridos. Atuação conectando estratégia de negócios, produtos digitais, dados e IA aplicada à gestão e operações, com histórico de redução de custos, melhoria de SLAs, aumento de receita e maior engajamento de times.</p>
                     <p>Resultados importantes:</p>
                     <ul>
-                        <li>Redução de turnover em 40%/ano em time tech de +200 profissionais.</li>
-                        <li>Aumento de 60% no volume de propostas de delivery/mês.</li>
-                        <li>Redução de 60% de incidentes em produção com criação de aplicação de suporte.</li>
+                        <li>Redução de turnover em 40%/ano em time tech de +200 profissionais, via gestão de pessoas, health checks e frameworks de desenvolvimento.</li>
+                        <li>Aumento de 60% no volume de propostas de delivery/mês ao estruturar modelo de pré-venda de tecnologia, além de 20% de redução de custo médio com reutilização de building blocks.</li>
+                        <li>Redução de 60% de incidentes em produção com criação de aplicação de suporte e revisão de processos em operação 24x7.</li>
                     </ul>
                 </div>
                 <div class="about-item">
@@ -54,6 +54,7 @@
                         <li>Educação Executiva, Liderança na Inovação · MIT Professional Education (fevereiro de 2023 - maio de 2023)</li>
                         <li>MBA Executivo: Gerenciamento de Projetos na FGV (Concluído) (2022)</li>
                         <li>MBA em Liderança, Inovação e Gestão 3.0 na PUCRS (Concluído) (2020)</li>
+                        <li>Gestão da Tecnologia da Informação na UNIP (Concluído) (2019)</li>
                     </ul>
                 </div>
                 <div class="about-item">
@@ -69,9 +70,9 @@
                 <div class="about-item">
                     <h3>Certificações</h3>
                     <ul>
-                        <li>IA, Negócios e Inovação: AI for Leaders (StartSe, 2023), xBA, Exponential Leadership – LEx (StartSe, 2022)</li>
-                        <li>Agilidade, Delivery e Liderança: ICP-BAF (ICAgile, 2021), Management 3.0, SAFe Agilist (2021), CLF, KMP, PSM I (Scrum.org, 2021)</li>
-                        <li>Gestão de Serviços e TI: ITIL4 Foundation (AXELOS, 2020), PMO – Implantação de Escritório de Projetos</li>
+                        <li>IA, Negócios e Inovação: AI for Leaders (StartSe, 2023), xBA, Exponential Leadership – LEx (StartSe, 2022), Discovery & Delivery with AI (Tera, 2026), AI in Digital Business (Tera, 2025).</li>
+                        <li>Agilidade, Delivery e Liderança: ICP-BAF (ICAgile, 2021), Management 3.0, SAFe Agilist (2021), CLF, KMP, PSM I (Scrum.org, 2021).</li>
+                        <li>Gestão de Serviços e TI: ITIL4 Foundation (AXELOS, 2020), PMO – Implantação de Escritório de Projetos.</li>
                     </ul>
                 </div>
                 <div class="about-item">
@@ -84,130 +85,424 @@
             </div>
         </section>
 
+        <!-- CASE 1: Otimização de Processos e Liderança com IA Generativa -->
         <section id="case1" class="section-content case-section">
             <h2>Case 1: Otimização de Processos e Liderança com IA Generativa</h2>
             <p class="case-intro">Este case demonstra a aplicação prática de IA Generativa para otimizar processos de gestão, focando na eficiência operacional e governança de dados, especialmente na elaboração de feedbacks individualizados.</p>
 
-            <h3>O Problema Operacional</h3>
-            <p>Gestores de TI e operações desperdiçam uma parcela significativa do seu tempo em tarefas repetitivas de baixo valor estratégico — especialmente na elaboração manual de feedbacks individualizados para suas equipes.</p>
-            <ul>
-                <li><strong>72%</strong> do tempo de gestores gasto em feedbacks repetitivos (McKinsey 2025).</li>
-                <li><strong>80%</strong> meta de automação da geração de feedbacks.</li>
-                <li><strong>3x</strong> custo oculto quando somados inconsistência linguística e falta de rastreabilidade.</li>
-            </ul>
-
-            <h3>Visão Geral da Solução</h3>
+            <h3>1. Visão Macro da Arquitetura</h3>
             <p>A arquitetura foi concebida em cinco camadas funcionais independentes, permitindo substituição de componentes sem impacto no fluxo principal. O motor LLM escolhido foi a API Mistral, com prompts estruturados no padrão system + user para garantir consistência e rastreabilidade de respostas.</p>
-            <p><strong>Camadas:</strong> Input Estruturado, Orquestração (Make low-code ou Serverless Node.js), Inteligência LLM (API Mistral), Output Padronizado (JSON), Evolução (Histórico, versionamento e analytics).</p>
+            <img src="assets/cases/case1-image.jpg" alt="Arquitetura Conceitual em Camadas do Case 1" class="case-image">
+            <p class="image-caption">Diagrama: Arquitetura Conceitual em Camadas (Input, Orquestração, Inteligência LLM, Output, Evolução)</p>
 
-            <h3>Case 1 — Google Sheets + Make + Mistral (Arquitetura Low-Code)</h3>
+            <h3>2. Contexto de Uso: Quando usar cada abordagem?</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fator</th>
+                            <th>Abordagem 1 (Low-Code)</th>
+                            <th>Abordagem 2 (Serverless)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Complexidade</td>
+                            <td>Projetos rápidos/POCs</td>
+                            <td>Sistemas em produção</td>
+                        </tr>
+                        <tr>
+                            <td>Equipe</td>
+                            <td>Times de negócio</td>
+                            <td>Squads técnicas</td>
+                        </tr>
+                        <tr>
+                            <td>Escala</td>
+                            <td>Até 50 reqs/mês</td>
+                            <td>+1k reqs/mês</td>
+                        </tr>
+                        <tr>
+                            <td>Customização</td>
+                            <td>Limitada</td>
+                            <td>Ilimitada (código aberto)</td>
+                        </tr>
+                        <tr>
+                            <td>Custos</td>
+                            <td>US$ 0-50/mês</td>
+                            <td>US$ 15-200/mês</td>
+                        </tr>
+                        <tr>
+                            <td>Manutenção</td>
+                            <td>Gerenciada pelo provedor</td>
+                            <td>Ownership total</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>3. Detalhamento por Abordagem</h3>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 1: Low-Code Corporativo</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Google Sheets → Make → Mistral</span>
+                    <span class="use-case">Ideal para: Squads ágeis sem perfil técnico</span>
+                </div>
+                <p>Esta abordagem foca na implementação rápida e na adoção por equipes sem perfil técnico, utilizando ferramentas low-code para orquestração e o Google Sheets como interface de entrada e saída.</p>
+                <img src="assets/cases/case1-flow1.svg" alt="Fluxo Low-Code do Case 1" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>Input Estruturado</h5>
+                        <p>Dados estruturados por colaborador preenchidos diretamente na planilha Google corporativa, com template validado via Apps Script.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Orquestração (Make)</h5>
+                        <p>Plataforma low-code que valida campos obrigatórios, monta o prompt padronizado e gerencia o fluxo de dados.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Inteligência LLM (API Mistral)</h5>
+                        <p>Chamada HTTP para a API Mistral, que gera a resposta e a grava de volta na planilha original.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Diferenciais</h5>
+                        <ul>
+                            <li>Solução 100% low-code, sem infraestrutura dedicada.</li>
+                            <li>Escalável no ecossistema Google Workspace.</li>
+                            <li>Redução estimada de ~70% do tempo operacional.</li>
+                            <li>Base para análise longitudinal de performance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 2: Arquitetura Serverless Moderna</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">GitHub → Vercel → Node.js Serverless → Mistral</span>
+                    <span class="use-case">Ideal para: Sistemas em produção com alta escalabilidade e governança</span>
+                </div>
+                <p>Esta abordagem oferece uma solução mais robusta e escalável, utilizando uma arquitetura serverless para o backend e deploy contínuo via GitHub e Vercel.</p>
+                <img src="assets/cases/case1-flow2.svg" alt="Fluxo Serverless do Case 1" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>Frontend (HTML/CSS na Vercel)</h5>
+                        <p>Interface leve e responsiva hospedada com deploy contínuo via GitHub Actions.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Backend (Function Node.js Serverless)</h5>
+                        <p>Função serverless que converte o formulário em prompt, chama a API Mistral, retorna JSON e renderiza a UI.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Monitoramento</h5>
+                        <p>OpenTelemetry integrado para rastreabilidade de latência e erros em produção.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Diferenciais</h5>
+                        <ul>
+                            <li>Arquitetura moderna serverless, zero-maintenance.</li>
+                            <li>Custo operacional menor que US$ 15/mês.</li>
+                            <li>Redução estimada de ~85% no tempo de geração.</li>
+                            <li>Cold-start configurado abaixo de 1,2 segundos.</li>
+                            <li>Deploy contínuo com rollback automático via Git.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Comparativo Técnico e Trade-offs</h3>
+            <p>Ambas as abordagens oferecem benefícios distintos, e a escolha depende do contexto do projeto e dos recursos disponíveis.</p>
             <ul>
-                <li><strong>Input:</strong> Google Sheets (dados estruturados por colaborador).</li>
-                <li><strong>Orquestração:</strong> Make (valida campos, monta prompt).</li>
-                <li><strong>LLM:</strong> API Mistral (gera resposta e grava na planilha).</li>
-                <li><strong>Diferenciais:</strong> 100% low-code, escalável no Google Workspace, redução de ~70% do tempo operacional, base para análise longitudinal.</li>
+                <li><strong>Flexibilidade vs. Velocidade de Implementação:</strong> A abordagem low-code é mais rápida para POCs, enquanto a serverless oferece maior flexibilidade para customização e integração complexa.</li>
+                <li><strong>Custo Inicial vs. Custo Recorrente:</strong> Low-code pode ter um custo inicial menor, mas a serverless pode ser mais eficiente em escala, com custos previsíveis e otimizados.</li>
+                <li><strong>Governança e Compliance:</strong> A abordagem serverless permite um controle mais granular sobre segurança e privacidade (LGPD++), enquanto a low-code depende mais das políticas do provedor.</li>
             </ul>
 
-            <h3>Case 2 — GitHub + Vercel + Node.js Serverless + Mistral (Arquitetura Serverless Moderna)</h3>
-            <ul>
-                <li><strong>Frontend:</strong> HTML/CSS na Vercel (interface leve e responsiva).</li>
-                <li><strong>Backend:</strong> Function Node.js Serverless (converte formulário em prompt, chama API Mistral, retorna JSON).</li>
-                <li><strong>Monitoramento:</strong> OpenTelemetry integrado.</li>
-                <li><strong>Diferenciais:</strong> Arquitetura serverless, custo operacional < US$15/mês, redução de ~85% no tempo de geração, deploy contínuo.</li>
-            </ul>
+            <h3>5. Roadmap de Evolução</h3>
+            <p>A progressão natural entre as abordagens pode ser visualizada como um roadmap:</p>
+            <div class="roadmap">
+                <div class="roadmap-step">
+                    <h4>Low-Code Proof</h4>
+                    <p>(1-4 semanas)</p>
+                    <p>Validação rápida do conceito, com foco em funcionalidade básica e feedback inicial.</p>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-step">
+                    <h4>Serverless MVP</h4>
+                    <p>(2-8 semanas)</p>
+                    <p>Implementação de uma versão mínima viável com arquitetura serverless, escalabilidade e governança aprimoradas.</p>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-step">
+                    <h4>Pipeline Empresarial</h4>
+                    <p>(3-6 meses)</p>
+                    <p>Expansão para outros processos corporativos, integração com sistemas legados e analytics longitudinal de performance.</p>
+                </div>
+            </div>
 
-            <h3>Conclusão e Resultados Obtidos</h3>
-            <ul>
-                <li><strong>Eficiência com ROI Mensurável:</strong> Redução de 70% a 85% no tempo de geração de feedbacks.</li>
-                <li><strong>Arquitetura Reutilizável:</strong> Adaptável para pré-venda, triagem de incidentes e suporte interno.</li>
-                <li><strong>Maturidade Técnica e Estratégica:</strong> Visão de produto, governança robusta e entrega de abordagens complementares (low-code e serverless).</li>
-            </ul>
-            <img src="assets/cases/case1-image.jpg" alt="Diagrama do Case 1" class="case-image">
+            <h3>6. Lições Aprendidas e Resultados</h3>
+            <div class="lessons-learned">
+                <h4>Padrões Comprovados</h4>
+                <ul>
+                    <li>**Governança > Velocidade nas fases iniciais:** A gestão de riscos (segurança, privacidade, viés algorítmico) foi tratada como requisito de arquitetura desde a concepção.</li>
+                    <li>**Cold-start de 1.2s é crítico para adoção:** Otimização do tempo de resposta inicial da função serverless para garantir uma boa experiência do usuário.</li>
+                    <li>**Human-in-the-Loop:** A revisão humana obrigatória antes da entrega de feedbacks é essencial para garantir qualidade e mitigar vieses.</li>
+                </ul>
+                <h4>Resultados Obtidos</h4>
+                <ul>
+                    <li>**Eficiência com ROI Mensurável:** Redução de 70% a 85% no tempo de geração de feedbacks, com custo operacional inferior a US$ 15/mês na arquitetura serverless.</li>
+                    <li>**Arquitetura Reutilizável:** Solução adaptável para pré-venda, triagem de incidentes e suporte interno.</li>
+                    <li>**Maturidade Técnica e Estratégica:** Visão de produto, governança robusta e capacidade de entregar abordagens complementares (low-code e serverless) com foco em valor real.</li>
+                </ul>
+            </div>
         </section>
 
+        <!-- CASE 2: Geração de Histórias de Usuário com RAG e IA Generativa -->
         <section id="case2" class="section-content case-section">
-            <h2>Case 2: Geração de Histórias de Usuário com IA Generativa</h2>
+            <h2>Case 2: Geração de Histórias de Usuário com RAG e IA Generativa</h2>
             <p class="case-intro">Este case aborda a utilização de RAG (Retrieval Augmented Generation) para gerar histórias de usuário de forma inteligente, aproveitando o conhecimento de projetos e documentações anteriores, através de fluxos automatizados (n8n).</p>
 
-            <h3>O Desafio: Gargalos na Criação de Histórias de Usuário</h3>
+            <h3>1. Visão Macro da Arquitetura</h3>
+            <p>A solução utiliza a arquitetura Retrieval Augmented Generation (RAG) para transformar documentos técnicos em histórias de usuário estruturadas, garantindo contexto e precisão em cada etapa do processo. A arquitetura é modular e flexível, permitindo a substituição de componentes sem impacto no fluxo principal.</p>
+            <img src="assets/cases/case2-image.jpg" alt="Arquitetura em Camadas do Case 2" class="case-image">
+            <p class="image-caption">Diagrama: Arquitetura em Camadas (Interface, Orquestração, Embeddings, Base de Conhecimento, LLM)</p>
+
+            <h3>2. Contexto de Uso: Otimização do Refinamento de Requisitos</h3>
+            <p>O desafio central era a criação manual de histórias de usuário, um processo lento, repetitivo e propenso a inconsistências. A solução RAG visa automatizar, padronizar e acelerar este processo, reduzindo erros e liberando a equipe para tarefas de maior valor estratégico.</p>
             <ul>
-                <li><strong>Criação Manual:</strong> Processo lento e repetitivo.</li>
-                <li><strong>Inconsistências:</strong> Ambiguidades e variações na qualidade.</li>
+                <li><strong>Criação Manual:</strong> Processo lento e repetitivo que consome recursos valiosos da equipe.</li>
+                <li><strong>Inconsistências:</strong> Ambiguidades e variações na qualidade dificultam o alinhamento.</li>
                 <li><strong>Alto Consumo:</strong> Tempo desperdiçado em tarefas de baixo valor estratégico.</li>
             </ul>
-            <p><strong>Objetivos:</strong> Automatizar, Consistência, Acelerar, Reduzir Erros.</p>
+            <p><strong>Objetivos da Solução:</strong> Automatizar a geração a partir de documentos técnicos, melhorar clareza e padrão dos requisitos, acelerar ciclos de delivery e reduzir erros.</p>
 
-            <h3>A Solução: RAG para Histórias de Usuário</h3>
-            <p>A solução utiliza a arquitetura RAG para transformar documentos técnicos em histórias de usuário estruturadas, garantindo contexto e precisão.</p>
-            <p><strong>Fluxo:</strong> Documento Bruto (PDF) → Processamento RAG (Recuperação semântica + Geração por IA) → Saída Refinada (Histórias estruturadas) → Revisão Humana.</p>
+            <h3>3. Detalhamento da Abordagem: Fluxo de Dados RAG</h3>
 
-            <h3>Arquitetura em Camadas: Flexibilidade e Escalabilidade</h3>
-            <p>A solução é modular e flexível, permitindo a substituição de componentes sem impacto no fluxo principal.</p>
-            <p><strong>Camadas:</strong> Interface do Usuário, Orquestração (n8n), Embeddings (Cohere), Base de Conhecimento (Supabase com pgvector), LLM (Gemini).</p>
+            <div class="architecture-approach">
+                <h4>Fluxo de Ingestão de Documentos</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Interface Web → n8n → Cohere → Supabase/pgvector</span>
+                    <span class="use-case">Objetivo: Construir uma base de conhecimento semântica</span>
+                </div>
+                <p>Este fluxo detalha como os documentos brutos são processados e armazenados de forma que possam ser semanticamente pesquisáveis.</p>
+                <img src="assets/cases/case2-flow-ingestion.svg" alt="Fluxo de Ingestão do Case 2" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>1. Upload de PDF</h5>
+                        <p>Usuário faz upload de PDF através da Interface Web (Vercel).</p>
+                    </div>
+                    <div class="step">
+                        <h5>2. Webhook n8n</h5>
+                        <p>PDF é enviado para n8n via Webhook, que extrai texto e realiza chunking (Node.js/JS).</p>
+                    </div>
+                    <div class="step">
+                        <h5>3. Cohere Embeddings</h5>
+                        <p>Chunks são vetorizados usando Cohere Embeddings, transformando texto em vetores numéricos.</p>
+                    </div>
+                    <div class="step">
+                        <h5>4. Supabase/pgvector</h5>
+                        <p>Vetores e chunks armazenados em Supabase com pgvector para busca semântica eficiente.</p>
+                    </div>
+                </div>
+            </div>
 
-            <h3>Stack Tecnológico</h3>
+            <div class="architecture-approach">
+                <h4>Fluxo de Geração de Histórias</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Interface Web → n8n → Cohere → Supabase/pgvector → Google Gemini</span>
+                    <span class="use-case">Objetivo: Gerar histórias de usuário contextualizadas</span>
+                </div>
+                <p>Este fluxo descreve como uma query do usuário é utilizada para recuperar informações relevantes e gerar histórias de usuário com IA.</p>
+                <img src="assets/cases/case2-flow-generation.svg" alt="Fluxo de Geração do Case 2" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>1. Query do Usuário</h5>
+                        <p>Usuário faz query na Interface Web, que é enviada para n8n via Webhook.</p>
+                    </div>
+                    <div class="step">
+                        <h5>2. Cohere Embeddings</h5>
+                        <p>Query vetorizada usando Cohere Embeddings para busca por similaridade.</p>
+                    </div>
+                    <div class="step">
+                        <h5>3. Busca Semântica (Supabase)</h5>
+                        <p>Busca por similaridade em Supabase/pgvector para encontrar chunks relevantes.</p>
+                    </div>
+                    <div class="step">
+                        <h5>4. Montar Contexto e LLM</h5>
+                        <p>Contexto montado e estruturado por n8n (JS), e prompt enviado para Google Gemini LLM para gerar histórias.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Stack Tecnológico</h3>
+            <p>As tecnologias utilizadas são modernas e eficientes, garantindo escalabilidade e performance:</p>
             <ul>
-                <li><strong>Google Gemini:</strong> LLM para geração de texto.</li>
-                <li><strong>Cohere:</strong> Serviço de Embeddings.</li>
-                <li><strong>Supabase:</strong> PostgreSQL com pgvector.</li>
-                <li><strong>n8n:</strong> Plataforma de automação e orquestração low-code.</li>
-                <li><strong>Vercel:</strong> Hosting da interface web.</li>
-                <li><strong>GitHub:</strong> Controle de versão.</li>
+                <li><strong>Google Gemini:</strong> Modelo de Linguagem Grande (LLM) para geração de texto natural e contextualizado.</li>
+                <li><strong>Cohere:</strong> Serviço de Embeddings para transformar texto em vetores semânticos.</li>
+                <li><strong>Supabase:</strong> PostgreSQL com pgvector para armazenamento eficiente de vetores e chunks.</li>
+                <li><strong>n8n:</strong> Plataforma de automação e orquestração low-code dos fluxos de dados.</li>
+                <li><strong>Vercel:</strong> Plataforma de deploy e hosting da interface web com performance otimizada.</li>
+                <li><strong>GitHub:</strong> Controle de versão, CI/CD e colaboração entre equipes.</li>
             </ul>
 
-            <h3>Resultados e ROI</h3>
+            <h3>5. Resultados e ROI</h3>
+            <p>A implementação desta solução trouxe benefícios mensuráveis:</p>
             <ul>
-                <li><strong>80%</strong> Redução no Tempo (de dias para minutos).</li>
-                <li><strong>30%</strong> Aumento na Consistência.</li>
-                <li><strong>Impacto no Negócio:</strong> Ciclos de Delivery Mais Rápidos, Melhor Alinhamento, Experiência Otimizada.</li>
+                <li><strong>80% Redução no Tempo:</strong> De dias para minutos na criação de histórias de usuário.</li>
+                <li><strong>30% Aumento na Consistência:</strong> Histórias mais claras, padronizadas e alinhadas.</li>
+                <li><strong>Impacto no Negócio:</strong> Ciclos de Delivery Mais Rápidos, Melhor Alinhamento e Experiência Otimizada.</li>
             </ul>
-            <img src="assets/cases/case2-image.jpg" alt="Diagrama do Case 2" class="case-image">
+
+            <h3>6. Lições Aprendidas e Evolução Contínua</h3>
+            <div class="lessons-learned">
+                <h4>Lições Aprendidas</h4>
+                <ul>
+                    <li>A qualidade dos documentos de entrada impacta diretamente a precisão das histórias geradas.</li>
+                    <li>A plataforma n8n agilizou o desenvolvimento e facilitou ajustes no fluxo.</li>
+                    <li>A validação humana final é essencial para garantir qualidade e contexto (Human-in-the-Loop).</li>
+                    <li>A escolha do modelo de embedding afeta significativamente a relevância da busca semântica.</li>
+                </ul>
+                <h4>Próximos Passos</h4>
+                <ul>
+                    <li>Suporte a múltiplos idiomas para equipes globais.</li>
+                    <li>Fine-tuning do LLM para domínios específicos da empresa.</li>
+                    <li>Integração com Jira e outras ferramentas de gestão de projetos.</li>
+                    <li>Dashboards de Analytics para monitoramento de performance e métricas de uso.</li>
+                </ul>
+            </div>
         </section>
 
+        <!-- CASE 3: Eficiência no Refinamento de Requisitos de Delivery com IA -->
         <section id="case3" class="section-content case-section">
             <h2>Case 3: Eficiência no Refinamento de Requisitos de Delivery com IA</h2>
             <p class="case-intro">Este modelo de operação de IA acelera a esteira de requisitos, transformando dias de trabalho em minutos através de agentes inteligentes, elevando a maturidade técnica e a fluidez das squads.</p>
 
-            <h3>O Desafio: Gargalos no Refinamento Manual de Requisitos</h3>
-            <p>O refinamento manual consome tempo excessivo, gera inconsistências e eleva os custos.</p>
+            <h3>1. Visão Macro da Solução</h3>
+            <p>A solução utiliza Agentes de IA para transformar automaticamente um requisito bruto em histórias de usuário estruturadas, cenários de teste e estimativas de esforço — reduzindo dias de trabalho a minutos. Os agentes formam um ecossistema colaborativo onde a saída de um agente serve como entrada para o próximo.</p>
+            <img src="assets/cases/case3-image.jpg" alt="Visão Geral da Solução do Case 3" class="case-image">
+            <p class="image-caption">Diagrama: Fluxo de Refinamento com Agentes de IA (Requisito Bruto → Processamento IA → Saída Refinada → Revisão War Room)</p>
+
+            <h3>2. Contexto de Uso: Gargalos no Refinamento Manual</h3>
+            <p>O refinamento manual de requisitos consome tempo excessivo, gera inconsistências e eleva os custos. Equipes passam dias revisando documentos, corrigindo erros e reescrevendo histórias antes mesmo de uma linha de código ser escrita.</p>
             <ul>
-                <li><strong>72%</strong> Tempo Perdido do ciclo de entrega em refinamento manual.</li>
-                <li><strong>40%</strong> Erros nos Requisitos (ambiguidades ou informações incompletas).</li>
-                <li><strong>10×</strong> mais caro corrigir um erro de requisito na produção.</li>
+                <li><strong>72% Tempo Perdido:</strong> do ciclo de entrega gasto apenas em refinamento manual de requisitos.</li>
+                <li><strong>40% Erros nos Requisitos:</strong> das histórias apresentam ambiguidades ou informações incompletas.</li>
+                <li><strong>10× Custo dos Erros:</strong> mais caro corrigir um erro de requisito na produção do que no início.</li>
             </ul>
 
-            <h3>Visão Geral da Solução</h3>
-            <p>A solução utiliza Agentes de IA para transformar automaticamente um requisito bruto em histórias de usuário estruturadas, cenários de teste e estimativas de esforço.</p>
-            <p><strong>Fluxo:</strong> Requisito Bruto → Processamento IA (Gemini) → Saída Refinada (Histórias, testes, estimativas) → Revisão War Room (Validação humana).</p>
+            <h3>3. Detalhamento por Abordagem</h3>
 
-            <h3>Caso 1: Automação Low-Code com Make + Google Sheets</h3>
-            <p>Três agentes especializados operam dentro do Make, lendo requisitos do Google Sheets e devolvendo resultados refinados.</p>
+            <div class="architecture-approach">
+                <h4>Abordagem 1: Automação Low-Code com Make + Google Sheets</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Google Sheets → Make → Gemini</span>
+                    <span class="use-case">Ideal para: Implementação rápida e equipes de negócio</span>
+                </div>
+                <p>Implementação rápida, sem infraestrutura própria. Três agentes especializados operam dentro do Make, lendo requisitos diretamente do Google Sheets e devolvendo os resultados refinados na mesma planilha.</p>
+                <img src="assets/cases/case3-flow1.svg" alt="Fluxo Low-Code do Case 3" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>Agente Product Owner</h5>
+                        <p>Lê o requisito bruto e gera histórias de usuário no formato padrão (Como usuário, quero… para que…).</p>
+                    </div>
+                    <div class="step">
+                        <h5>Agente QA</h5>
+                        <p>Gera automaticamente cenários de teste (casos de uso para validar se o sistema funciona corretamente).</p>
+                    </div>
+                    <div class="step">
+                        <h5>Agente Sizing</h5>
+                        <p>Estima o esforço de desenvolvimento em pontos de história (unidade de medida de complexidade de tarefas).</p>
+                    </div>
+                    <div class="step">
+                        <h5>Destaques</h5>
+                        <ul>
+                            <li>Implementação em horas, custo zero de infraestrutura.</li>
+                            <li>Integração nativa com Google Workspace.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="architecture-approach">
+                <h4>Abordagem 2: Plataforma Colaborativa Serverless (War-Room)</h4>
+                <div class="approach-header">
+                    <span class="tech-stack">Node.js → Vercel → Gemini (Agentes)</span>
+                    <span class="use-case">Ideal para: Plataformas empresariais com governança e colaboração</span>
+                </div>
+                <p>Uma aplicação web construída em Node.js e hospedada no Vercel, reunindo cinco agentes especializados em uma interface colaborativa única — o "War-Room".</p>
+                <img src="assets/cases/case3-flow2.svg" alt="Fluxo Serverless do Case 3" class="case-image small-image">
+                <div class="flow-steps">
+                    <div class="step">
+                        <h5>Agentes Especializados</h5>
+                        <p>Product Owner, QA Agent, Release Manager, Reviewer, Sizing Agent.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Interface Colaborativa</h5>
+                        <p>Permite que os agentes colaborem e que os gestores visualizem, revisem e aprovem as saídas.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Governança (War-Room)</h5>
+                        <p>Interface central para revisão humana (Human-in-the-Loop), decisão GO / NO-GO e FinOps de Tokens.</p>
+                    </div>
+                    <div class="step">
+                        <h5>Destaques</h5>
+                        <ul>
+                            <li>Arquitetura serverless, deploy contínuo.</li>
+                            <li>Colaboração entre agentes elimina retrabalho.</li>
+                            <li>Controle granular do consumo de tokens e logs de uso para compliance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4. Stack Tecnológico</h3>
+            <p>Todas as tecnologias utilizadas são modernas, amplamente adotadas no mercado e de baixo custo operacional:</p>
             <ul>
-                <li><strong>Agente Product Owner:</strong> Gera histórias de usuário.</li>
-                <li><strong>Agente QA:</strong> Gera cenários de teste.</li>
-                <li><strong>Agente Sizing:</strong> Estima o esforço de desenvolvimento.</li>
+                <li><strong>Google Sheets:</strong> Planilha online usada como interface de entrada de requisitos.</li>
+                <li><strong>Make:</strong> Plataforma de automação visual (conecta sistemas sem necessidade de programação avançada).</li>
+                <li><strong>Gemini (Google AI):</strong> Modelo de inteligência artificial generativa que interpreta e gera texto com qualidade profissional.</li>
+                <li><strong>Node.js:</strong> Ambiente de execução JavaScript no servidor (motor que processa as requisições da aplicação web).</li>
+                <li><strong>Vercel:</strong> Plataforma serverless para hospedagem e deploy automático da aplicação.</li>
+                <li><strong>GitHub:</strong> Repositório de código-fonte (onde o código é armazenado, versionado e compartilhado com o time).</li>
             </ul>
 
-            <h3>Caso 2: Plataforma Colaborativa Serverless (War-Room)</h3>
-            <p>Uma aplicação web em Node.js e Vercel, reunindo cinco agentes especializados em uma interface colaborativa.</p>
-            <ul>
-                <li><strong>Product Owner, QA Agent, Release Manager, Reviewer, Sizing Agent.</strong></li>
-            </ul>
+            <h3>5. Roadmap de Evolução</h3>
+            <p>A evolução deste modelo de operação pode seguir um roadmap similar ao Case 1, adaptado para a orquestração de agentes:</p>
+            <div class="roadmap">
+                <div class="roadmap-step">
+                    <h4>POC Low-Code</h4>
+                    <p>(1-3 semanas)</p>
+                    <p>Validação do conceito com agentes básicos em ambiente low-code.</p>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-step">
+                    <h4>MVP Colaborativo</h4>
+                    <p>(2-6 semanas)</p>
+                    <p>Desenvolvimento da plataforma War-Room com agentes essenciais e governança inicial.</p>
+                </div>
+                <div class="roadmap-arrow">→</div>
+                <div class="roadmap-step">
+                    <h4>Expansão e Otimização</h4>
+                    <p>(3-9 meses)</p>
+                    <p>Adição de novos agentes, integração com ferramentas de backlog (Jira, Azure DevOps) e otimização de custos.</p>
+                </div>
+            </div>
 
-            <h3>Governança: War-Room: Controle Humano e FinOps</h3>
-            <p>Interface central onde gestores visualizam, revisam e aprovam as saídas dos agentes antes da publicação no backlog.</p>
-            <ul>
-                <li>Revisão Humana (Human-in-the-Loop), Decisão GO / NO-GO, FinOps de Tokens.</li>
-            </ul>
-
-            <h3>Benefícios de Negócio (ROI)</h3>
-            <ul>
-                <li><strong>85%</strong> Redução no Tempo de Refinamento.</li>
-                <li><strong>70%</strong> Menos Erros de Requisito.</li>
-                <li><strong>60%</strong> Redução de Retrabalho.</li>
-                <li><strong>3×</strong> ROI estimado nos primeiros 6 meses.</li>
-            </ul>
-            <img src="assets/cases/case3-image.jpg" alt="Diagrama do Case 3" class="case-image">
+            <h3>6. Lições Aprendidas e Benefícios de Negócio</h3>
+            <div class="lessons-learned">
+                <h4>Lições Aprendidas</h4>
+                <ul>
+                    <li>A colaboração entre agentes elimina retrabalho e garante que todos os artefatos (histórias, testes, estimativas) estejam sempre alinhados.</li>
+                    <li>A governança via "War-Room" com revisão humana é crucial para garantir a qualidade e a conformidade dos outputs da IA.</li>
+                    <li>O controle granular do consumo de tokens (FinOps) permite otimizar custos e garantir a sustentabilidade da solução.</li>
+                </ul>
+                <h4>Benefícios de Negócio (ROI)</h4>
+                <ul>
+                    <li>**85% Redução no Tempo de Refinamento:** De dias para minutos por requisito processado.</li>
+                    <li>**70% Menos Erros de Requisito:** Histórias mais claras reduzem ambiguidades no desenvolvimento.</li>
+                    <li>**60% Redução de Retrabalho:** Menos ciclos de revisão e correção nas sprints.</li>
+                    <li>**3× ROI estimado** nos primeiros 6 meses de operação.</li>
+                </ul>
+            </div>
         </section>
     </main>
 
